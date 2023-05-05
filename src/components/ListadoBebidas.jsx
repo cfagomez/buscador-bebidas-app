@@ -7,7 +7,7 @@ const ListadoBebidas = () => {
     const {bebidas} = useBebidas()
 
   return (
-    <Row className='mt-3'>
+    <Row className='mt-5'>
         {
             bebidas.map(bebida => (
 
