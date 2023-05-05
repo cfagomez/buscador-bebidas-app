@@ -24,7 +24,7 @@ const BebidasProvider = ({children}) => {
   }
 
   return (
-    <BebidasContext.Provider value={{consultarBebidas}}>
+    <BebidasContext.Provider value={{consultarBebidas, bebidas}}>
         {children}
     </BebidasContext.Provider>
   )
