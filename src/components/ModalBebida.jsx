@@ -3,17 +3,17 @@ import useBebidas from '../hook/useBebidas'
 
 const ModalBebida = () => {
 
-    const {modal, handleModal} = useBebidas()
+    const {modal, handleModal, receta} = useBebidas()
 
   return (
     <Modal show={modal} onHide={handleModal}>
         <Image 
-            //src={}
-            //alt={}
+            src={receta.strDrinkThumb}
+            alt={`Imagen de ${receta.strDrink}`}
         />
         <Modal.Header>
             <Modal.Title>
-                {}
+                {receta.strDrink}
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
