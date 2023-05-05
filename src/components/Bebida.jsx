@@ -1,6 +1,10 @@
 import { Col, Card, Button } from 'react-bootstrap'
+import useBebidas from '../hook/useBebidas'
 
 const Bebida = ({bebida}) => {
+
+    const {handleModal, handleBebidaId} = useBebidas()
+
   return (
     <Col md={6} lg={3}>
         <Card className='mb-4'>
@@ -16,6 +20,11 @@ const Bebida = ({bebida}) => {
                 <Button
                     className='w-100 text-uppercase mt-2'
                     variant='warning'
+                    onClick={() => {
+                            handleModal,
+                            handleBebidaId(bebida.idDrink)
+                        }
+                    }
                 >
                     Ver Receta
                 </Button>

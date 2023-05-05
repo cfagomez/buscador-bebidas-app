@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import axios from "axios"
 
 const BebidasContext = createContext()
@@ -6,6 +6,17 @@ const BebidasContext = createContext()
 const BebidasProvider = ({children}) => {
 
   const [bebidas, setBebidas] = useState([])
+  const [modal, setModal] = useState(false)
+  const [bebidaId, setBebidaId] = useState('')
+  const [receta, setReceta] = useState('')
+
+  useEffect(() => {
+
+    if (!bebidaId) return
+
+    obtenerReceta()
+
+  }, [bebidaId])
 
   const consultarBebidas = async (datos) => {
 
@@ -23,8 +34,36 @@ const BebidasProvider = ({children}) => {
 
   }
 
+  const handleModal = () => {
+
+    setModal(!modal)
+
+  }
+
+  const handleBebidaId = (id) => {
+
+    setBebidaId(id)
+
+  }
+
+  const obtenerReceta = async () => {
+
+    try {
+
+      const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${bebidaId}`
+      const {data} = await axios(url)
+      setReceta(data.drinks[0])
+
+    } catch(error) {
+
+      console.log(error)
+
+    }
+
+  }
+
   return (
-    <BebidasContext.Provider value={{consultarBebidas, bebidas}}>
+    <BebidasContext.Provider value={{consultarBebidas, bebidas, handleModal, modal, handleBebidaId, receta}}>
         {children}
     </BebidasContext.Provider>
   )
