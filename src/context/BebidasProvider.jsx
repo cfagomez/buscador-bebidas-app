@@ -63,7 +63,7 @@ const BebidasProvider = ({children}) => {
   }
 
   return (
-    <BebidasContext.Provider value={{consultarBebidas, bebidas, handleModal, modal, handleBebidaId, receta}}>
+    <BebidasContext.Provider value={{consultarBebidas, bebidas, handleModal, modal, handleBebidaId, receta, setReceta}}>
         {children}
     </BebidasContext.Provider>
   )

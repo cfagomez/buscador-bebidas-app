@@ -21,7 +21,7 @@ const Bebida = ({bebida}) => {
                     className='w-100 text-uppercase mt-2'
                     variant='warning'
                     onClick={() => {
-                            handleModal,
+                            handleModal(),
                             handleBebidaId(bebida.idDrink)
                         }
                     }
